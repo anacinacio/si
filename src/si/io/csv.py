@@ -4,7 +4,7 @@ import pandas as pd
 
 from si.data.dataset import Dataset
 
-def read_csv (filename: str, sep: str =',', features: bool, label: bool=False) -> Dataset:
+def read_csv (filename: str, sep: str = ',', features: bool = False, label: bool = False) -> Dataset:
     """
     Read a csv file (data file) into a Dataset object
     :param filename: str, path to the file
@@ -17,6 +17,8 @@ def read_csv (filename: str, sep: str =',', features: bool, label: bool=False) -
     :return: Dataset
         The dataset object
     """
+    data = pd.read_csv(filename, sep=sep)
+
     if features and label:
         features = data.columns[:-1]
         label = data.columns[-1]
