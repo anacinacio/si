@@ -20,7 +20,7 @@ class Dense:
         O bias da camada
     """
 
-    def __unit__(self, input_size: int = None, output_size: int = None):
+    def __init__(self, input_size: int = None, output_size: int = None):
         """
         Inicializar dense layer
 
@@ -37,8 +37,8 @@ class Dense:
 
         self.X = None
         #attributes
-        self.weights = np.random.randn(self.input_size, self.output_size) * 0.01 #nº de linhas, nº de colunas
-        self.bias = np.zeros((1, self.output_size))
+        self.weights = np.random.randn(input_size, output_size) * 0.01 #nº de linhas, nº de colunas
+        self.bias = np.zeros((1, output_size))
 
     def forward(self, input_data: np.ndarray) -> np.ndarray:
         """

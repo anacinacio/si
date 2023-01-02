@@ -27,7 +27,7 @@ class NN:
         history: dict
             A history do modelo treinado.
     """
-    def __unit__(self, layers:list, epochs: int=1000, loss_function: Callable = mse,
+    def __init__(self, layers:list, epochs: int=1000, loss_function: Callable = mse,
                  learning_rate: float =0.01, loss_derivation: Callable = mse_derivative, verbose: bool = False):
         """
         Inicializar o modelo neural network
