@@ -55,7 +55,7 @@ class Dense:
         """
         self.X = input_data
 
-        return np.dot(X, self.weights) + self.bias
+        return np.dot(input_data, self.weights) + self.bias
 
     #o output_size tem de ser igual
     #colunas - features
@@ -78,7 +78,7 @@ class SigmoidActivation:
     """
 
     """
-    def __unit__(self):
+    def __init__(self):
         self.input_data = None
 
     def forward(self, input_data) -> np.ndarray:
@@ -102,7 +102,7 @@ class SoftMaxActivation:
     """
     calcula a probabilidade de ocorrência de cada classe
     """
-    def __unit__(self):
+    def __init__(self):
         self.input_data = None
 
     def forward(self, input_data) -> np.ndarray:
@@ -133,7 +133,7 @@ class ReLUActivation:
     """
     calcula a relação linear retificada
     """
-    def __unit__(self):
+    def __init__(self):
         self.input_data = None
 
     def forward(self, input_data: np.ndarray) -> np.ndarray:
@@ -165,10 +165,10 @@ class LinearActivation:
     """
 
     """
-    def __unit__(self):
+    def __init__(self):
         pass
 
-    def forward(self, input_data: np.ndarray) -> np.ndarray:
+    def forward(input_data: np.ndarray) -> np.ndarray:
         """
         :param
         input_data: np.ndarray

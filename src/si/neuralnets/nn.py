@@ -56,8 +56,8 @@ class NN:
         #atributos
         self.history ={}
 
-    def fit(self, dataset: Dataset) -> "NN":
-        """
+    """def fit(self, dataset: Dataset) -> "NN":
+        
         onde treinamos o modelo com o dataset
         iteramos cada camada
         :param
@@ -65,10 +65,9 @@ class NN:
             O dataset
         :return:
         self: NN
-
-        """
+        
         X = dataset.X
-        y = dataset.Y #predict_y
+        y =dataset.y
 
         for epoch in range(1, self.epochs + 1):
 
@@ -82,13 +81,28 @@ class NN:
             for layer in self.layers[::-1]:
                 error = layer.backward(error, self.learning_rate)
 
-            #salver histórico
+            #salvar histórico
             cost = self.loss_function(y, X)
             self.history[epoch] = cost
 
             #loss
             if self.verbose:
                 print(f'Epoch {epoch}/{self.epochs} - {cost}')
+
+        return self
+    """
+
+
+    def fit(self, dataset: Dataset) -> "NN":
+        """
+        Trains the neural network.
+        :param dataset: dataset to train the neural network
+        :return: Returns the trained neural network.
+        """
+        X = dataset.X # pointer to the input data, a more correct way would be to copy the data (x = dataset.x.copy())
+        for layer in self.layers:
+            X = layer.forward(X)  # if we were to use the dataset.x we would be using the original data, but we want
+            # to use the data that was already processed by the previous layer
 
         return self
 
@@ -145,11 +159,7 @@ class NN:
 
 
 if __name__ == '__main__':
-    from neuronetworks.layer import Dense
-    from neuronetworks.sigmoid_activation import SigmoidActivation
-    from neuronetworks.soft_max_activation import SoftMaxActivation
-    from neuronetworks.re_lu_activation import ReLUActivation
-
+    from si.neuralnets.layer import Dense, SigmoidActivation, SoftMaxActivation, LinearActivation,ReLUActivation
     X = np.array([[0,0],
                 [0,1],
                 [1,0],
@@ -187,8 +197,8 @@ if __name__ == '__main__':
     l1_sa = SigmoidActivation()
     l2_sa = SigmoidActivation()
 
-    nn_model_sa = NN(layers=[l1, l1_sa, l2, l2_sa])
-    nn_model_sa.fit(dataset=dataset)
+    nn_model_sa = NN([l1, l1_sa, l2, l2_sa])
+    nn_model_sa.fit(dataset)
 
 
     print(nn_model_sa.predict(dataset))
