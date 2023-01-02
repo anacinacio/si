@@ -2,7 +2,7 @@ from typing import Tuple
 from si.data.dataset import Dataset
 import numpy as np
 
-def train_test_split(dataset: Dataset, test_size: float = 0.2, random_state: int = 42):
+def train_test_split(dataset: Dataset, test_size: float = 0.2, random_state: int = 42)->tuple:
     """
     - Gera permutações usando o np.random.permutation
     - Infere o número de amostras no dataset de teste e treino
@@ -29,7 +29,7 @@ def train_test_split(dataset: Dataset, test_size: float = 0.2, random_state: int
 
     test_idxs = permutations[:n_test]
 
-    train_idxs = permutations[:n_test]
+    train_idxs = permutations[n_test:]
 
     train = Dataset(dataset.X[train_idxs],
                     dataset.y[train_idxs],
