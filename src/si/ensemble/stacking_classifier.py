@@ -51,7 +51,7 @@ class StackingClassifier:
             predicitions.append(model.predict(dataset))
 
         #Treina o modelo final usando as previsões obtidas anteriormente
-        self.final_model.fit(Dataset(dataset.X, np.array(predicitions).T))
+        self.final_model.fit(Dataset(dataset.y, np.array(predicitions).T))
 
         #Retorna ele próprio
         return self
@@ -74,7 +74,7 @@ class StackingClassifier:
 
         #Obtém as previsões finais usando o modelo final e as previsões obtidas anteriormente
 
-        predictions_f = self.final_model.predict(Dataset(dataset.X, np.array(predictions).T))
+        predictions_f = self.final_model.predict(Dataset(dataset.y, np.array(predictions).T))
         return predictions_f
 
     def score(self, dataset: Dataset) -> float:

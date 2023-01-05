@@ -5,9 +5,10 @@ Usa a formula: sum((y_pred - y_true )**2) / (m*2)
 - m representa o número de amostras
 - h(x(i)) representa os valores estimados
 - Y(i) representa os valores reais
-
+Soma as diferenças entre os valores estimados e os valores reais ao quadrado e divide pelo número de amostras vezes 2
 Serve para saber se o nosso modelo chegou perto ou não do que pretendiamos.
-Uma medida para no final treinar o modelo, saber se chegou perto daquilo que é a realidade'''
+
+Uma medida para no final de treinar o modelo, saber se chegou perto daquilo que é a realidade ou não'''
 
 def mse(y_true: np.ndarray, y_pred: np.ndarray) -> float:
     """

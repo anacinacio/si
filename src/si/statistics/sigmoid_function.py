@@ -2,7 +2,7 @@ import numpy as np
 
 def sigmoid_function(X: np.ndarray) -> np.ndarray:
     """
-    Retorna a função sigmóide do input dado
+    Retorna a função sigmoid do input dado
 
     :param X: np.ndarray
         valores de entrada

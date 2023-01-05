@@ -110,8 +110,11 @@ class PCA:
         :return:
             X reduzido
         """
+        #falta passos
+
         #centrar dados
         centering_data = self.get_centering_data(dataset)
+
 
         #X reduzido
         V =  self.components.T
